@@ -40,15 +40,15 @@ function setup() {
   background(255);
   textSize(16);
   let title = "A Slice of Shared Self";
-  let intro1 = "In a society infiltrated by ubiquitous AI systems, how are we perceived and understood? How do we respond? Are we more connected or more divided? Are we becoming the greatest collective ever, or are we losing the notion of an individual?"
-  let intro2 = "Abstracted, generalized, and profiled, the way we're blended in these systems has already reshaped our perception of the world. When phones and webcams become our new mirror, when the reflected us is no longer the real us, how would we confront and live with these polarized/muted fractions of ourselves, and how would we move forward?"
-  let intro3 = "Here's a slice of our shared-self in the eyes of an AI, reflected off an algorithmically aligned/mis-aligned collective of webcam feeds, including yours in real-time. Please grant access to the camera, observe, move or hold your positions once in a while (if you want to). Your feed won't be recorded."
-  text(title, 240, 50);
-  text(intro1, 40, 80, 560, 100);
-  text(intro2, 40, 170, 560, 200);
-  text(intro3, 40, 290, 560, 200);
-  rect(270, 405, 80, 40);
-  text("show", 292, 430);
+  // let intro1 = "In a society infiltrated by ubiquitous AI systems, how are we perceived and understood? How do we respond? Are we more connected or more divided? Are we becoming the greatest collective ever, or are we losing the notion of an individual?"
+  // let intro2 = "Abstracted, generalized, and profiled, the way we're blended in these systems has already reshaped our perception of the world. When phones and webcams become our new mirror, when the reflected us is no longer the real us, how would we confront and live with these polarized/muted fractions of ourselves, and how would we move forward?"
+  // let intro3 = "Here's a slice of our shared-self in the eyes of an AI, reflected off an algorithmically aligned/mis-aligned collective of webcam feeds, including yours in real-time. Please grant access to the camera, observe, move or hold your positions once in a while (if you want to). Your feed won't be recorded."
+  text(title, 240, 100);
+  // text(intro1, 40, 80, 560, 100);
+  // text(intro2, 40, 170, 560, 200);
+  // text(intro3, 40, 290, 560, 200);
+  rect(270, 205, 80, 40);
+  text("show", 292, 230);
 }
 
 function modelReady() {
@@ -70,10 +70,12 @@ function draw() {
 
     if (currentPoseKeypoints && matchedImg1) {
 
+      // cam.size(imgWidth, imgHeight);
+
       push();
       translate(width, 0);
       scale(-1, 1);
-      image(cam, 0, 0, cnvWidth, cnvHeight, 0, padding, imgWidth, imgHeight-padding);
+      image(cam, 0, 0, cnvWidth, cnvHeight, 0, padding, imgWidth, cnvHeight);
       // image(cam, imgHeight/3, 0, imgWidth-60, imgHeight/3, 0,imgHeight/3, imgWidth, imgHeight/3);
       // image(cam, 0, 0, imgWidth, imgHeight, 0, 60, 640, 420);
       pop();
@@ -112,8 +114,8 @@ function draw() {
       // fill(0);
       background(255);
       textSize(16);
-      text("Analyzing webcam...", 240, 200);
-      text("This might take a while.", 230, 250);
+      text("Analyzing webcam...", 240, 150);
+      text("This might take a while.", 230, 200);
     }
   }
 }
