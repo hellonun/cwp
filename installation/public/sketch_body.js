@@ -1,6 +1,9 @@
 let imgVidArray = [];
 let imgWidth = 640;
 let imgHeight = 480;
+let padding = 60; // (480 - 360) / 2
+let cnvWidth = imgWidth,
+    cnvHeight = imgHeight - padding * 2;
 
 let net;
 let netReady = false
@@ -21,7 +24,7 @@ function preload() {
 }
 
 function setup() {
-  cnv = createCanvas(imgWidth, imgHeight);
+  cnv = createCanvas(cnvWidth, cnvHeight);
   // cnvDiv = createDiv();
   // cnvDiv.id('center');
   cnv.parent('center');
@@ -70,7 +73,7 @@ function draw() {
       push();
       translate(width, 0);
       scale(-1, 1);
-      image(cam, 0, 0, imgWidth, imgHeight);
+      image(cam, 0, 0, cnvWidth, cnvHeight, 0, padding, imgWidth, imgHeight-padding);
       // image(cam, imgHeight/3, 0, imgWidth-60, imgHeight/3, 0,imgHeight/3, imgWidth, imgHeight/3);
       // image(cam, 0, 0, imgWidth, imgHeight, 0, 60, 640, 420);
       pop();
@@ -96,10 +99,10 @@ function draw() {
       // scale(-1, 1);
       if (!sliceMiddle) {
         // image(matchedImg1.vid, 0, 0, imgWidth, imgHeight / 3, 0, 0, imgWidth, imgHeight / 3);
-        image(matchedImg1.vid, 0, imgHeight / 3, imgWidth, imgHeight / 3, 0, imgHeight / 3, imgWidth, imgHeight / 3);
+        image(matchedImg1.vid, 0, cnvHeight / 3, cnvWidth, cnvHeight / 3, 0, padding + cnvHeight / 3, imgWidth, cnvHeight / 3);
       } else {
-        image(matchedImg1.vid, 0, 0, imgWidth, imgHeight / 3, 0, 0, imgWidth, imgHeight / 3);
-        image(matchedImg1.vid, 0, imgHeight / 3 * 2, imgWidth, imgHeight / 3, 0, imgHeight / 3 * 2, imgWidth, imgHeight / 3);
+        image(matchedImg1.vid, 0, 0, cnvWidth, cnvHeight / 3, 0, padding, imgWidth, cnvHeight / 3);
+        image(matchedImg1.vid, 0, cnvHeight / 3 * 2, imgWidth, cnvHeight / 3, 0, padding + cnvHeight / 3 * 2, imgWidth, cnvHeight / 3);
       }
       // pop();
       // fill(0);
